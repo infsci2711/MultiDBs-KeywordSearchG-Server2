@@ -1,0 +1,18 @@
+{ "Books":
+[ { "ISBN":"ISBN-0-13-713526-2",
+	"Price":100,
+	"Title":"Machine Learning",
+	"Author":"Tom Mitchell"
+	},
+	 { "ISBN":"ISBN-0-13-713526-3",
+	"Price":40,
+	"Title":"Gone with the wind",
+	"Author":"Jane Austin"
+	},
+	 { "ISBN":"ISBN-0-13-713526-4",
+	"Price":40,
+	"Title":"Elements of Statistical learning",
+	"Author":"Robert Tibshirani"
+	}
+]
+}
