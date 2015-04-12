@@ -92,5 +92,10 @@
 			<artifactId>jetty-webapp</artifactId>
 			<version>9.2.4.v20141103</version>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
 	</dependencies>
 </project>
