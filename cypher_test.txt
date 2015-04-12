@@ -1,0 +1,46 @@
+CREATE p =(andres { name:'Andres' })-[:WORKS_AT]->(neo)<-[:WORKS_AT]-(michael { name:'Michael' })
+RETURN p
+
+create a1 = (a { name: "foo" })-[:HELLO]->(b {name : "bar"})	
+RETURN a1   
+Create a2 = (c {name: "Baz"})-[:GOODBYE]->(d {name:"Quux"})
+RETURN a2
+Create a3 = (e {name: "Jack"})-[:GOODBYE]->(f {name:"Mary"})
+RETURN a3
+Create a4 = (g {name: "Lucy"})-[:HELLO]->(h {name:"Mike"})
+RETURN a4
+Create a5 = (i {name: "Celine"})-[:GOODBYE]->(j {name:"Jean"})
+RETURN a5
+
+Create k1 = (k {product: "milk"})-[:BELONG]->(l {name:"Inventory1"})
+RETURN k1
+Create k2 = (m {product: "orange"})-[:BELONG]->(n {name:"Inventory2"})
+RETURN k2
+Create k3 = (o {product: "oat"})-[:BELONG]->(p {name:"Inventory3"})
+RETURN k3
+Create k4 = (q {product: "cereal"}) -[:BELONG]->(r {name:"Inventory4"})
+RETURN k4
+Create k5 = (s {product: "rice"})-[:BELONG]->(t {name:"Inventory5"})
+RETURN k5
+
+Create j1=(c1 {Course: "Math"})-[:IN]->(r1 {Room:"r101"})
+RETURN j1
+Create j2 = (c2 {Course: "Music"})-[:IN]->(r2 {Room:"r102"})
+RETURN j2
+Create j3 = (c3 {Course: "Physic"})-[:IN]->(r3 {Room:"r103"})
+RETURN j3
+Create j4 = (c4 {Course: "Chemistry"}) -[:IN]->(r4 {Room:"r104"})
+RETURN j4
+Create j5 = (c5 {Course: "Linear Algebra"})-[:IN]->(r5 {Room:"r105"})
+RETURN j5
+
+CREATE p1 =(andres { name:'Andres' })-[:WORKS_WITH]->(michael { name:'Michael' })
+RETURN p1
+CREATE p2 =(black { name:'Black' })-[:WORKS_WITH]->(mickey { name:'Mickey' })
+RETURN p2
+CREATE p3 =(white { name:'White' })-[:WORKS_WITH]->(henry { name:'Henry' })
+RETURN p3
+CREATE p4 =(tom { name:'Tom' })-[:WORKS_WITH]->(pheobe { name:'Pheobe' })
+RETURN p5
+CREATE p5 =(cecilia { name:'Cecilia' })-[:WORKS_WITH]->(john { name:'John' })
+RETURN p5
