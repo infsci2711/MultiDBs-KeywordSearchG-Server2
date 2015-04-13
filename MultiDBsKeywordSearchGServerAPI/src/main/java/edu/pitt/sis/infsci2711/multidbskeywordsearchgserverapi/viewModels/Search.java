@@ -65,7 +65,7 @@ public class Search {
 	
 	 public Search () {
 
-		 DB_PATH = "target/graph.DB";
+		 DB_PATH = "/opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/target//graph.DB";
 		 //DB_PATH = "/Users/fujun/Downloads/tutorial/TutorialServerAPI/neo4j-community-2.2.0/database";
 		 db = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 
