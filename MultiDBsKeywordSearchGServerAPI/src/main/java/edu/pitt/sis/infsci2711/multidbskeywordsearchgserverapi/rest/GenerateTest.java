@@ -18,19 +18,19 @@ import org.json.JSONObject;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
 
-@Path("NeoSearch/")
-public class DemoRestApi {
+@Path("Generate/")
+public class GenerateTest {
 	
-	@Path("{keywords}")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response helloWorld(@PathParam("keywords") String keywords) throws JSONException {
+	@Path("test")
+	//@GET
+	//@Produces(MediaType.APPLICATION_JSON)
+	public Response generate() throws JSONException, IOException {
 		
-		Search search = new Search();
-		String entity = search.search(keywords);
-		search.shutDown();
+		CreateTestData create = new CreateTestData();
+		String e = create.create();
+		
 		//return Response.status(200).entity("[{\"row\":[{\"name\":\"Napoleon\",\"Gender\":\"Male\",\"School\":\"IS\"}]},{\"row\":[{\"name\":\"BigTree\",\"Gender\":\"Male\",\"School\":\"IS\"}]},{\"row\":[{\"course\":\"Statistics\",\"Grade\":\"3\"}]},{\"row\":[{\"course\":\"MapReduce\",\"Grade\":\"3\"}]}]").build();
-		return Response.status(200).entity(entity).build();
+		return Response.status(200).entity(e).build();
 		
 	}
 	

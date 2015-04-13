@@ -18,13 +18,10 @@ import org.json.JSONObject;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
 
-@Path("Create/")
+
 public class CreateTestData {
-	
-	@Path("test")
-	@GET
-	//@Produces(MediaType.APPLICATION_JSON)
-	public void cteate() throws JSONException, IOException{
+
+	public String create() throws JSONException, IOException{
 		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str2 = "{\"name\":\"BigTree\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str3 = "{\"course\":\"Statistics\", \"Grade\":\"3\"}";
@@ -46,7 +43,7 @@ public class CreateTestData {
 		test.json_neo4j(str8);
 		test.close();
 		test.shutDown();
-		System.out.println("success!");
+		return "success!";
 		
 	}
 	
