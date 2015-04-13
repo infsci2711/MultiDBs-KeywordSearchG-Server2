@@ -50,6 +50,7 @@ import org.neo4j.tooling.GlobalGraphOperations;
 import org.neo4j.graphdb.DynamicLabel; // add a label
 import org.neo4j.graphdb.Label;
 
+import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest.CreateTestData;
 import scala.util.parsing.json.JSON;
 
 
@@ -71,7 +72,9 @@ public class Search {
 
 	 }
     
-    public String search (String keyword) {
+    public String search (String keyword) throws JSONException, IOException {
+    	CreateTestData create = new CreateTestData();
+    	create.create();
     	String BigResult = "[";
 		engine = new ExecutionEngine(db);
 		ExecutionResult result; 
