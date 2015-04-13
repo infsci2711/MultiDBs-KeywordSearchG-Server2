@@ -16,10 +16,10 @@ import org.json.JSONObject;
 
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
 
-@Path("Demo1/")
+@Path("NeoSearch/")
 public class DemoRestApi {
 	
-	@Path("helloWorld/{keywords}")
+	@Path("{keywords}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response helloWorld(@PathParam("keywords") String keywords) throws JSONException {

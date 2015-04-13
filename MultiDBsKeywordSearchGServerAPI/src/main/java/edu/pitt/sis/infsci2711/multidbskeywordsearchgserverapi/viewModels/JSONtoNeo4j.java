@@ -121,7 +121,7 @@ public class JSONtoNeo4j {
 
 	 } // end json_neo4j
 	 
-	 void close() { // close BufferedWriter
+	 public void close() { // close BufferedWriter
 			try {
 				output.close();
 			} catch(IOException e) {
