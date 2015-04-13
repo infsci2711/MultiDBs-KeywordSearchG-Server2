@@ -23,7 +23,7 @@ public class CreateTestData {
 	
 	@Path("test")
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	//@Produces(MediaType.APPLICATION_JSON)
 	public void cteate() throws JSONException, IOException{
 		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str2 = "{\"name\":\"BigTree\", \"Gender\":\"Male\", \"School\":\"IS\"}";
@@ -45,6 +45,7 @@ public class CreateTestData {
 		test.json_neo4j(str7);
 		test.json_neo4j(str8);
 		test.close();
+		test.shutDown();
 		System.out.println("success!");
 		
 	}
