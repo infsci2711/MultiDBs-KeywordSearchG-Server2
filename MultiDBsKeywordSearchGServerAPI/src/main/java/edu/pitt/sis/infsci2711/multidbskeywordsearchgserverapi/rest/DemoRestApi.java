@@ -24,7 +24,7 @@ public class DemoRestApi {
 	@Path("{keywords}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response helloWorld(@PathParam("keywords") String keywords) throws JSONException {
+	public Response helloWorld(@PathParam("keywords") String keywords){
 		
 		Search search = new Search();
 		String entity = search.search(keywords);

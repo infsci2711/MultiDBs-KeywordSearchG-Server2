@@ -72,9 +72,9 @@ public class Search {
 
 	 }
     
-    public String search (String keyword) throws JSONException, IOException {
-    	CreateTestData create = new CreateTestData();
-    	create.create();
+    public String search (String keyword){
+    	
+    	
     	String BigResult = "[";
 		engine = new ExecutionEngine(db);
 		ExecutionResult result; 
