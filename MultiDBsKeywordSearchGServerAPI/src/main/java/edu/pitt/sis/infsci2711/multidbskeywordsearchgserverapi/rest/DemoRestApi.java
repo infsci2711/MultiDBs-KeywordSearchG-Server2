@@ -1,5 +1,6 @@
 package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
 
 @Path("NeoSearch/")
@@ -23,6 +25,32 @@ public class DemoRestApi {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response helloWorld(@PathParam("keywords") String keywords) throws JSONException {
+		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
+		String str2 = "{\"name\":\"BigTree\", \"Gender\":\"Male\", \"School\":\"IS\"}";
+		String str3 = "{\"course\":\"Statistics\", \"Grade\":\"3\"}";
+		String str4 = "{\"course\":\"MapReduce\", \"Grade\":\"3\"}";
+		String str5 = "{\"city\":\"pitt\", \"Avenue\":\"centre\"}";
+		String str6 = "{\"city\":\"DC\", \"Avenue\":\"centre\"}";
+		String str7 = "{\"state\":\"PA\", \"Avenue\":\"centre\"}";
+		String str8 = "{\"country\":\"China\", \"Avenue\":\"centre\"}";
+		
+		JSONtoNeo4j test = new JSONtoNeo4j();
+
+		try {
+			test.json_neo4j(str1);
+			test.json_neo4j(str2);
+			test.json_neo4j(str3);
+			test.json_neo4j(str4);
+			test.json_neo4j(str5);
+			test.json_neo4j(str6);
+			test.json_neo4j(str7);
+			test.json_neo4j(str8);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		test.close();
 		Search search = new Search();
 		String entity = search.search(keywords);
 		search.shutDown();
@@ -31,7 +59,7 @@ public class DemoRestApi {
 		
 	}
 	
-	
+
 	
 }
 
