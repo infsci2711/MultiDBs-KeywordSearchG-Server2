@@ -2,10 +2,14 @@ package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels;
 
 import java.io.IOException;
 
+import javax.ws.rs.Path;
+
 import org.json.JSONException;
 
-//import org.json.JSONException;
+import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
 
+//import org.json.JSONException;
+@Path("Create/")
 public class test {
 	
 	
