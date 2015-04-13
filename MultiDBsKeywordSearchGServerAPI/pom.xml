@@ -94,7 +94,7 @@
 			<version>20090211</version>
 		</dependency>
 	</dependencies>
-</project>
+
 <build>
 	<plugins>
 				
@@ -142,3 +142,4 @@
 
 	</plugins>
 </build>
+</project>
