@@ -1,13 +1,16 @@
-package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
+package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels;
 
 import java.io.IOException;
+
+import org.json.JSONException;
 
 //import org.json.JSONException;
 
 public class test {
 	
-	/*
+	
 	public static void main(String[] args) throws JSONException, IOException {
+		
 		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str2 = "{\"name\":\"BigTree\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str3 = "{\"course\":\"Statistics\", \"Grade\":\"3\"}";
@@ -16,8 +19,9 @@ public class test {
 		String str6 = "{\"city\":\"DC\", \"Avenue\":\"centre\"}";
 		String str7 = "{\"state\":\"PA\", \"Avenue\":\"centre\"}";
 		String str8 = "{\"country\":\"China\", \"Avenue\":\"centre\"}";
+		
 		JSONtoNeo4j test = new JSONtoNeo4j();
-		//json test = new json();
+
 		test.json_neo4j(str1);
 		test.json_neo4j(str2);
 		test.json_neo4j(str3);
@@ -28,17 +32,22 @@ public class test {
 		test.json_neo4j(str8);
 		test.close();
 	}
-	*/
 	
 	
+	
+//	public static void main(String[] args) {
+//		
+//		InputCypher ic = new InputCypher();
+//		ic.checkDatabaseIsRunning();
+//		String result = ic.sendTransactionalCypherQuery("IS World");
+//		System.out.println(result);
+//		
+//	}
+	/*
 	public static void main(String[] args) {
-		
-		InputCypher ic = new InputCypher();
-		ic.checkDatabaseIsRunning();
-		String result = ic.sendTransactionalCypherQuery("IS World");
-		System.out.println(result);
-		
+		Search search = new Search();
+		search.search("a");
 	}
-	
+	*/
 	
 }
