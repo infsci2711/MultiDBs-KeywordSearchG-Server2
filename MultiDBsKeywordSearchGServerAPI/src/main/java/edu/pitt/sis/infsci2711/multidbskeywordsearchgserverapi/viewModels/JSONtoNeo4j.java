@@ -129,4 +129,12 @@ public class JSONtoNeo4j {
 				 e.printStackTrace();
 			}
 	 } // end close
+	 public void shutDown() {
+		// TODO Auto-generated method stub
+		 System.out.println();
+	        System.out.println( "Shutting down database …" );
+	        // START SNIPPET: shutdownServer
+	        db.shutdown();
+		
+	}
 }
