@@ -18,9 +18,11 @@ import org.json.JSONObject;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
 import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
 
-
+@Path("Create/")
 public class CreateTestData {
 
+	@Path("Case1")
+	@GET
 	public String create() throws JSONException, IOException{
 		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
 		String str2 = "{\"name\":\"BigTree\", \"Gender\":\"Male\", \"School\":\"IS\"}";
