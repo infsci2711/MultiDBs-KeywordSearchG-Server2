@@ -66,7 +66,7 @@ public class Search {
 	
 	 public Search () {
 
-		 DB_PATH = "graph.DB";
+		 DB_PATH = "target/graph.DB";
 		 //DB_PATH = "/opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/";
 		 db = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 
