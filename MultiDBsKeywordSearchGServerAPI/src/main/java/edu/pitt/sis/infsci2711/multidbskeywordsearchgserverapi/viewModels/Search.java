@@ -66,7 +66,7 @@ public class Search {
 	
 	 public Search () {
 
-		 DB_PATH = "/multidbskeywordsearchgserverapi/db/graph.DB";
+		 DB_PATH = "graph.DB";
 		 //DB_PATH = "/opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/";
 		 db = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 
@@ -125,7 +125,7 @@ public class Search {
     public String query(String str)  {
     	 // initialize a BufferedReader
 		 try {
-			 br = new BufferedReader(new InputStreamReader(new FileInputStream("/multidbskeywordsearchgserverapi/db/property.csv")));
+			 br = new BufferedReader(new InputStreamReader(new FileInputStream("property.csv")));
 		 } catch (FileNotFoundException e) {
 			 System.out.println(e.getMessage());
 			 e.printStackTrace();
