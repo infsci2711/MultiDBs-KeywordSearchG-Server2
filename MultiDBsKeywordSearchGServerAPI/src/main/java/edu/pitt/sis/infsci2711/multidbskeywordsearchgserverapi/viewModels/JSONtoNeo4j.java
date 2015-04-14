@@ -37,7 +37,7 @@ public class JSONtoNeo4j {
 		 container = new HashSet<String[]>();
 		 contain = new HashSet<String>();
 		 file = "property.csv";
-		 DB_PATH = "target/graph.DB";
+		 DB_PATH = "db/graph.DB";
 		 //DB_PATH = "database";
 		 //DB_PATH = "neo4j-community-2.2.0/data/graph.db";
 		 
