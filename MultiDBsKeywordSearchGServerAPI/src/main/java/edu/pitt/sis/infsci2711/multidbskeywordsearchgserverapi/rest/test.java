@@ -35,6 +35,7 @@ public class test {
 		test.json_neo4j(str7);
 		test.json_neo4j(str8);
 		test.close();
+		test.shutDown();
 	}
 	
 	
