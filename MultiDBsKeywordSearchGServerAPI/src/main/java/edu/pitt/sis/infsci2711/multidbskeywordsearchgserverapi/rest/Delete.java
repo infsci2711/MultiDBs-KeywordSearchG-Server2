@@ -9,7 +9,7 @@ import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 public class Delete {
 	static GraphDatabaseService db;
 	public static void main (String[] args) {
-		 String DB_PATH = "db/graph.DB";
+		 String DB_PATH = "/multidbskeywordsearchgserverapi/db/graph.DB";
 		 db = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		 ExecutionEngine engine = new ExecutionEngine(db);
 		 ExecutionResult result; 
