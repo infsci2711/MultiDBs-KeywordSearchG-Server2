@@ -1,5 +1,6 @@
 package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.ws.rs.Path;
@@ -12,7 +13,7 @@ import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONto
 //@Path("Create/")
 public class test {
 	
-	
+	/*
 	public static void main(String[] args) throws JSONException, IOException {
 		
 		String str1 = "{\"name\":\"Napoleon\", \"Gender\":\"Male\", \"School\":\"IS\"}";
@@ -36,8 +37,15 @@ public class test {
 		test.json_neo4j(str8);
 		test.close();
 	}
-	
-	
+	*/
+	public static void main(String[] args) throws IOException {
+		//System.out.println(getAbsolutePath());
+	    File temp = File.createTempFile("i-am-a-temp-file", ".tmp" );
+	    
+	    String absolutePath = temp.getAbsolutePath();
+	    System.out.println("File path : " + absolutePath);
+	}
+
 	
 //	public static void main(String[] args) {
 //		
