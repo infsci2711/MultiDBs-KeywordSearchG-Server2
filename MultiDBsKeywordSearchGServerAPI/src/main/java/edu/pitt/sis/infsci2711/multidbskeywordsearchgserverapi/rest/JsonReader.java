@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,11 +46,19 @@ public class JsonReader {
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	      String jsonText = readAll(rd);
 	      JSONObject json = new JSONObject(jsonText);
-	      return json;
+	      //if (Response.status(500).equals(json)){
+	    	  //return null;
+	      //}
+	      //else{
+	    	  return json;
+	      //}
 	    } finally {
 	      is.close();
 	    }
 	  }
+  
+  
+  
   
   @SuppressWarnings("null")
 public static String[] metast() throws JSONException{

@@ -12,7 +12,12 @@ public class testm {
 		JSONObject json1=new JSONObject();
 		//JSONArray json2= (JSONArray) json1;
 		json1 = JsonReader.readJsonFromUrl2("http://54.174.80.167:7654/Query/1/metaStore");
+		if (json1==null){
+			System.out.println("null");
+		}
+		else{
 		System.out.println(json1);
+		}
 		//int rq=a.length;
 		//JsonReader sddd = new JsonReader();
 		//sddd.metast();
