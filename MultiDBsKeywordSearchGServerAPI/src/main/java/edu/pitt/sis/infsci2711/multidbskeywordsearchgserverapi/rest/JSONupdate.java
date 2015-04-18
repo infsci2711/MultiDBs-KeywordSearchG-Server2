@@ -202,6 +202,7 @@ public class JSONupdate {
 	  */
 	 public void Neo4j(String data) throws JSONException {
 		System.out.println("-----Neo4j begin------");
+		data = data.substring(1,data.length()-1);
 		System.out.println(data);
 		String[] temp_data= data.split(",");
 		String[] temp_column = column.split(",");
