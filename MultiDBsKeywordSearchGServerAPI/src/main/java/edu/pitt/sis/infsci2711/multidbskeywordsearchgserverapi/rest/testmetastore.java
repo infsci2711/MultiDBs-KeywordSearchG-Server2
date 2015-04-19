@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import org.json.JSONException;
 
 public class testmetastore {
-
-	public static String[] prestoinfo() throws Exception, IOException{
+	//String[] prestoinfo()
+	public static LinkedList<String> prestoinfo() throws Exception, IOException{
 		// TODO Auto-generated method stub
 		String[] jj = JsonReader.metast();
 		String tablename = null;
@@ -32,7 +32,7 @@ public class testmetastore {
 				//urlf= new String[r*rr];
 				//urlfinal= new String[r][rr];
 				String[][] urlfinal=new String[r][rr];
-				String[] urlf = new String[r*rr];;
+				String[] urlf = new String[r*rr+1];;
 				tablename=obj2[j];
 				urlfinal[i][j]=urlbase + "Query/" + dbid + "/" + tablename;
 				String tem = "";
@@ -48,9 +48,10 @@ public class testmetastore {
 		String[] qq=new String[cc];
 		for (int y=0;y<cc;y++){
 			qq[y] = ui.get(y);
-			//System.out.println(qq[y]);
+			System.out.println(qq[y]);
 		}
-		return qq;
+		//return qq;
+		return ui;
 		}
 		
 	}

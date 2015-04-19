@@ -3,6 +3,7 @@ package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,16 +14,16 @@ import org.json.JSONObject;
 public class PreDBtest {
 	
 	public static void predb() throws Exception {
-		String[] urll=testmetastore.prestoinfo();
-		int ir = urll.length;
+		LinkedList<String> urll=testmetastore.prestoinfo();
+		int ir = urll.size();
 		for (int ur = 0; ur<ir;ur++){
-			String urq=urll[ur];
-		JSONObject json3 = JsonReader.readJsonFromUrl2(urq);
-		if (json3==null){
-			break;
+			String urq=urll.get(ur);
+		JSONObject json8 = testempty.predbss(urq);
+		if (json8==null){
+			continue;
 		}
 		else{
-		String str =json3.toString();
+		String str =json8.toString();
 		JSONupdate test = new JSONupdate();
 		//str = "{\"schema\":{\"columnNames\":[\"aid\",\"value\",\"bid\",\"number\"]},\"data\":[{\"row\":[\"1\",\"2\",\"2\",\"23\"]},{\"row\":[\"2\",\"3\",\"3\",\"111\"]},{\"row\":[\"3\",\"4\",\"4\",\"121\"]},{\"row\":[\"4\",\"5\",\"5\",\"992\"]}]}";
 		
@@ -30,8 +31,8 @@ public class PreDBtest {
 		
 		if ( !str.startsWith("{\"error\"")) {
 			test.json(str);
-			test.checkProperty();
-			test.JSON2Neo4j();
+			//test.checkProperty();
+			//test.JSON2Neo4j();
 			//test.close();
 			test.shutDown();
 		} else {

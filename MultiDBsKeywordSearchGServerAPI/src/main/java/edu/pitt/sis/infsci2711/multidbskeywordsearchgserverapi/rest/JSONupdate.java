@@ -2,22 +2,10 @@ package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
 
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,21 +19,12 @@ public class JSONupdate {
 	 private static String DB_PATH;
 	 GraphDatabaseService db;
 	 
-	 BufferedWriter output = null;
-	 BufferedReader br = null;
-	 
-	 String file;
-	 Set<String> contain;	// contain contains each line of property
-	 Set<String[]> container; // container contains each line of property, store properties into String Array
-	 
-	 Map<String,String> schema_data;
+	 Map<String,String> schema_data; // resolve the outer json 
 	 
 	 public JSONupdate() {
 		 
 		 schema_data  = new HashMap<String,String>();
-		 container = new HashSet<String[]>();
-		 contain = new HashSet<String>();
-		 file = "property.csv";
+
 		 DB_PATH = "graph.DB";
 		 
 		 // initialize GraphDatabaseService
@@ -53,266 +32,126 @@ public class JSONupdate {
 			 db = new GraphDatabaseFactory().newEmbeddedDatabase( DB_PATH );
 		 }
 		 
-		 // initialize a BufferedWriter
-		 try {
-			 output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true))); 
-		 } catch (IOException e) {
-			 System.out.println(e.getMessage());
-			 e.printStackTrace();
-		 }
-		 
-		 // initialize a BufferedReader, read each line of property.csv
-		 try {
-			 br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		 } catch (FileNotFoundException e) {
-			 System.out.println(e.getMessage());
-			 e.printStackTrace();
-		 }
-		 
-		 // store the each line of property into contain and container
-		 try {
-			 String str;
-			 while( (str = br.readLine()) != null) {
-				 String[] temp = str.split(",");
-				 contain.add(str);
-				 container.add(temp);
-			 }
-		 } catch (IOException e) {
-			 System.out.println(e.getMessage());
-			 e.printStackTrace();
-		 }
-		 
-		 // close BufferedReader
-		 try {
-			 br.close();
-		 } catch(IOException e) {
-			 System.out.println(e.getMessage());
-			 e.printStackTrace();
-		 }
-		 
-	 }
+	 } // end JSONupdate
 	 
 	 /**
 	  * This method is used to resolve the JSON from URL
 	  * key is the schema. It is a JSON object. 
 	  * value is the data. It is a JSONArray.
 	  * @param url. url is the JSON crawled from URL
-	  * @return An String Array containing two elements. First is key, second is value
+	  * @return return a HashMap, there are two keys, "schema" and "data"
 	  * @throws JSONException
 	  */
-	 public void json (String url) throws JSONException{
+	 public HashMap<String, String> json (String url) throws JSONException{
 		System.out.println("--------begin json--------");
+		
+		HashMap<String, String> map = new HashMap<String, String>();
 		JSONObject obj = new JSONObject(url);
 		Iterator<String> keys = obj.keys();
 
-		 String key = "";
-		 String value = "";
-		 
 		while (keys.hasNext()) {
-			key = keys.next();
+			String key = keys.next();
 			System.out.println(key);
-			value = obj.getString(key);
+			String value = obj.getString(key);
 			System.out.println(value);
-			schema_data.put(key,value);
+			map.put(key, value);
 		} // end while 
-		System.out.println("--------end json---------");
 		
-		if (schema_data.containsKey("schema") && schema_data.containsKey("data")) {
-			System.out.println("---url to json is true---");
-		} else {
-			System.out.println("---url to json is false---");
-		}
-		System.out.println();
+		System.out.println("--------end json---------");
+		return map;
+		
 	 } // end json
-	 
-	 String column = "";
+	 	 
 	 /**
-	  * initialize column 
-	  * check whether the Property.csv contains column name or not
-	  * @throws JSONException 
-	  */
-	 public void checkProperty() throws JSONException {
-		 System.out.println("------checkProperty begin-------");
-		 String schema = schema_data.get("schema");
-		 column = ResolveSchema(schema); // column contains property name, split by ","
-		 System.out.println("column: " + column);
-		 try {
-			 if ( !contain.contains(column)) {
-				 output.write(column + "\n");
-				 System.out.println("output the column name to Property.csv");
-			 } else {
-				 System.out.println("Property.csv contains the column name");
-			 }
-		 } catch (IOException e) {
-			 System.out.println(e.getMessage());
-			 e.printStackTrace();
-		 }
-		 
-		 	// close BufferedWriter
-			try {
-				output.close();
-			} catch(IOException e) {
-				 System.out.println(e.getMessage());
-				 e.printStackTrace();
-			}
-		System.out.println("------checkProperty end-------");
-		System.out.println();
-	 }
-	 
-	 /**
-	  * schema = {"columnNames":["aid","value","bid","number"]}, first resolve this schema
-	  * columnNames is the key, ["aid","value","bid","number"] is the value
-	  * we will return     aid,value,bid, number
-	  * this method is used to extract property name, return the properties names separated by comma. 
-	  * @param schema 
+	  * this method can analyze an JSONObject, return JSON value
+	  * {"columnNames":["aid","value","bid","number"]} will return aid,value,bid,number
+	  * @param str
 	  * @return
 	  * @throws JSONException
 	  */
-	 public String ResolveSchema(String schema) throws JSONException {
-		 System.out.println("------ResolveSchema start-------");
-		 System.out.println("shhema: " + schema);
-		 String str = "";
+	 public String analyzeJSON(String str) throws JSONException {
 		 
-		 JSONObject obj = new JSONObject(schema);
+		 JSONObject obj = new JSONObject(str);
 		 Iterator<String> keys = obj.keys();
+		 String value = "";
 		 
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String val = obj.getString(key);
-			str = str + val.substring(0, val.length()-1);
-			//String[] pair = {key, val};
-		}
-		String[] temp = str.split(",");
-		String result = "";
-		for (String s : temp) {
-			result = result + s.substring(1,s.length()-1) + ",";
-		}
-		result = result.substring(1,result.length()-1);
-		System.out.println("-----ResolveSchema end-------");
-		System.out.println();
-		return result;
-		
-	 }
+		 while(keys.hasNext()) {
+			 String key = keys.next();
+			 value = obj.getString(key);
+		 }
+		 
+		 value = value.substring(1,value.length()-1);
+		 String result = "";
+		 String[] temp = value.split(",");
+		 
+		 for (String e : temp) {
+			 result = result + e.substring(1, e.length()-1) + ",";
+		 }
+		 
+		 result = result.substring(0, result.length()-1);
+		 return result;
+	 } // end analyzeJSON
 	 
 	 /**
-	  * 
-	  * this method is to resolve each JSONObject in JSONArray
-	  * @param data, data looks like this 1,2,2,23
-	  * @throws JSONException
+	  * [{"row":["1","2","2","23"]},{"row":["2","3","3","111"]},{"row":["3","4","4","121"]},{"row":["4","5","5","992"]}]
+	  * this will return (1,2,2,23), (2,3,3,111), (3,4,4,121), (4,5,5,992)
+	  * this method is to extract value in JSONArray
+	  * @param str, this is an JSONArray
+	  * @return
+	  * @throws JSONException 
 	  */
-	 public void Neo4j(String data) throws JSONException {
-		System.out.println("-----Neo4j begin------");
-		System.out.println(data);
-		String[] temp_data= data.split(",");
-		String[] temp_column = column.split(",");
-		
-		try( Transaction tx =  db.beginTx()) {
-			Node node = db.createNode();  // create a node
-			for (int i = 0; i < temp_data.length; i++) {
-				node.setProperty(temp_column[i], temp_data[i]);
-			}			
-			tx.success();			 
-		 } 
-		System.out.println("add json to neo4j is done");
-		System.out.println("-----Neo4j end------");
-		System.out.println();
-	 }
-	 
-	 /*
-	 public void Neo4j(String data) throws JSONException {
-		
-		JSONObject obj = new JSONObject(data);
-		Iterator<String> keys = obj.keys();
-		String str = ""; 
-		
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String val = obj.getString(key);
-			str = str + val.substring(0, val.length()-1);
-		}
-		
-		String[] temp = str.substring(1).split(",");
-		String result = "";
-		for (String s : temp) {
-			result = result + s.substring(1,s.length()-1) + ",";
-		}
-		result = result.substring(0,result.length()-1); // result json contain data, split by ","
-		System.out.println(result);
-		
-		String[] temp_data= result.split(",");
-		String[] temp_column = column.split(",");
-		
-		try( Transaction tx =  db.beginTx()) {
-			Node node = db.createNode();  // create a node
-			for (int i = 0; i < temp_data.length; i++) {
-				node.setProperty(temp_column[i], temp_data[i]);
-			}			
-			tx.success();			 
-		 } 
-		System.out.println("add json to neo4j is done");
-		
-	 }
-	 */
-	 
-	 
-	 /**
-	  * store an JSON object into Neo4j
-	  * @param str, this is an JSON object
-	 * @throws JSONException 
-	  */
-	 public void JSON2Neo4j() throws JSONException{
-		 // get the value in data, in below form
-		 // [{"row":["1","2","2","23"]},{"row":["2","3","3","111"]},{"row":["3","4","4","121"]},{"row":["4","5","5","992"]}]
-		 String data = schema_data.get("data"); 
+	 public LinkedList<String> analyzeJSONArray(String str) throws JSONException {
 		 
-		 JSONArray array = new JSONArray(data);
+		 LinkedList<String> result = new LinkedList<String>();
+		 JSONArray array = new JSONArray(str);
 		 
 		 for (int i = 0; i < array.length(); i++) {
-			 // row is json object, {"row":["1","2","2","23"]
 			 // we need to resolve  this json object
 			 JSONObject object = (JSONObject) array.get(i); 
-			 Iterator<String> keys = object.keys();
-			 
-			 while (keys.hasNext()) {
-				 String key = keys.next(); // key equals "row"
-				 String value_array = object.getString(key); // value_array equals ["1","2","2","23"]
-				 value_array.substring(1,value_array.length()-1);
-				 String result = "";
-				 String[] temp = value_array.split(",");
-				 for (String s : temp) {
-					 result = result + s.substring(1,s.length()-1)+",";
-				 }
-				 result = result.substring(0,result.length()-1);
-				 Neo4j(result);
-			 }
-			 //Neo4j(row);
+			 String s = object.toString();
+			 System.out.println("s");
+			 result.add(analyzeJSON(s));
 		 }
-		 System.out.println();
 		 
+		 return result;
 	 }
 	 
 	 /**
-	  * close BufferedReader
+	  * store data into neo4j, store database ID and table name into Neo4j
+	  * @param property, this is property name
+	  * @param data, this is the value of property
+	  * @param Did, this is database ID
+	  * @param tablename, this is table name
 	  */
-	 void close() { 
-			try {
-				output.close();
-			} catch(IOException e) {
-				 System.out.println(e.getMessage());
-				 e.printStackTrace();
-			}
-	 } // end close
+	 public void JSON2Neo4j(String property, String data, String Did, String tablename) {
+		 System.out.println("----begin JSON2Neo4j----");
+		 String[] temp_property = property.split(",");
+		 String[] temp_data = data.split(",");
+		 
+		 try( Transaction tx =  db.beginTx()) {
+			 Node node = db.createNode(); 
+			 for (int i = 0; i < temp_data.length; i++) {
+				 node.setProperty(temp_property[i], temp_data[i]);
+			 }
+			 node.setProperty("Did",Did);
+			 node.setProperty("tableName",tablename);
+			 tx.success();
+		 }
+
+		 System.out.println("----end JSON2Neo4j----");
+	 } // end JSON2Neo4j
+	 
+
 	 
 	 /**
 	  * shutDown database Neo4j
 	  */
-	 public void shutDown()
-	    {
+	 public void shutDown() {
 	      System.out.println();
 	      System.out.println( "Shutting down database ..." );
 	      // START SNIPPET: shutdownServer
 	      db.shutdown();
 	      // END SNIPPET: shutdownServer
-	    } // end shutdown
+ 	 } // end shutdown
 
 }

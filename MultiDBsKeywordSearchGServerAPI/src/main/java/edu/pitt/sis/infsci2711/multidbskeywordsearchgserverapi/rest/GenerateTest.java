@@ -28,14 +28,15 @@ import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search
 @Path("Generate/")
 public class GenerateTest {
 	
+	@SuppressWarnings("static-access")
 	@Path("test")
 	//@GET
 	//@Produces(MediaType.APPLICATION_JSON)
 	public Response generate() throws Exception {
 		DeleteData dl = new DeleteData();
 		dl.deleteNeo4j();
-		PreDBtest qw =new PreDBtest();
-		qw.predb();
+		FinalTest qw =new FinalTest();
+		qw.finaltest();
 
 		//CreateTestData create = new CreateTestData();
 		//String e = create.create();
