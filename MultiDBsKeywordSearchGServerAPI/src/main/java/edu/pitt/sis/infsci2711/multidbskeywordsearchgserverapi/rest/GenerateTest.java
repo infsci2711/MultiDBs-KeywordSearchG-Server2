@@ -29,7 +29,7 @@ import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search
 public class GenerateTest {
 	
 	//@SuppressWarnings("static-access")
-	@Path("test")
+	@Path("data")
 	//@GET
 	//@Produces(MediaType.APPLICATION_JSON)
 	public Response generate() throws Exception {
