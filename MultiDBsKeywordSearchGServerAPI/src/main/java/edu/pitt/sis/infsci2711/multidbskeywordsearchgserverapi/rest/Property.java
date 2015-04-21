@@ -72,7 +72,8 @@ public class Property {
 		System.out.println("----begin outputCSV----");
 		boolean result = false;
 		try {
-			if (container.contains(str)) {
+			if ( !container.contains(str)) {
+				container.add(str);
 				output.write(str + "\n");
 				//container.add(str);
 				System.out.println("----add a line of property to CSV----");
