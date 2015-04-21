@@ -127,6 +127,13 @@ body {
 	padding: 90px 0 100px 0;
 	text-align: center;
 }
+.container1 {
+	width: 1000px;
+	height: 2110px;
+	margin: 0 auto;
+	padding: 90px 0 100px 0;
+	text-align: center;
+}
 
 p {
 	font-family: 'Source Sans Pro', sans-serif;
@@ -929,6 +936,15 @@ h9 {
 
 .portraitlast {
 	padding-right:0px;
+	width: 200px;
+	height: auto;
+	margin: 0 auto;
+	float: left;
+}
+
+.portraitlast1 {
+	padding-left:420px;
+	padding-top:50px;
 	width: 200px;
 	height: auto;
 	margin: 0 auto;
