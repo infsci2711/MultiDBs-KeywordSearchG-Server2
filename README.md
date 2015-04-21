@@ -10,12 +10,12 @@ The data can be gotten from the MetaStore. Tuples can be transmitted in the form
 Our first task is to deal with the data we got and store them in our database.
 Secondly, we can search the keywords got from users in our database and return the result also in JSON format.
 Finally, the result will be presented as a table to the users.
- #Step1 store
+#Step1 store
  After gotten the data, we need to analyze it for the format of it is JSON. This means each tuple will have a key and a value, and we store the key and value in the node in our database. Every JSON object will be stored as a node.
- #Step2 search
+#Step2 search
  There are two difficulties in the step. First we need to search the keyword while the property is unknown of the node. Second, it is hard to deal with multiple key words at a time.
  To deal with the first problem, we store the properties in a file and store the file in the memory. Each time we read the file in the memory, so that a continuous search can be achieve. As to the second problem, we deal with multiple key words as a string and split the string by space to get every key word.
- #Step 3 return
+#Step 3 return
  The result will be returned to the front end in JSON format, just like the first step. Then we need to analyze the JSON format data and present it as a table to the user.
 #HOW TO INSTALL
 1. Login in AWS by SSH; install all the software (Maven, Git, JDK and nginx)
