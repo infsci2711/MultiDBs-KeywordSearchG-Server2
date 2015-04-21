@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
+
 public class JsonReader {
 
   private static String readAll(Reader rd) throws IOException {
@@ -58,10 +60,10 @@ public class JsonReader {
   
   @SuppressWarnings("null")
 public static String[] metast() throws JSONException{
-	  
+	  String met=PropertiesManager.getInstance().getStringProperty("metastore.rest.base");
     JSONArray json1= new JSONArray();
 	try {
-		json1 = readJsonFromUrl("http://54.152.26.131:7654/datasources");
+		json1 = readJsonFromUrl(met);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

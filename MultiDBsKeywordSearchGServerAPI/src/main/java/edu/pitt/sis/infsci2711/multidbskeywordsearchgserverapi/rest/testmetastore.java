@@ -6,13 +6,15 @@ import java.util.LinkedList;
 
 import org.json.JSONException;
 
+import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
+
 public class testmetastore {
 	//String[] prestoinfo()
 	public static LinkedList<String> prestoinfo() throws Exception, IOException{
 		// TODO Auto-generated method stub
 		String[] jj = JsonReader.metast();
 		String tablename = null;
-		String urlbase="http://54.174.80.167:7654/";
+		String urlbase=PropertiesManager.getInstance().getStringProperty("presto.rest.base");
 		
 		int q = 0;
 		//String[] obj=stringObject.split(",");

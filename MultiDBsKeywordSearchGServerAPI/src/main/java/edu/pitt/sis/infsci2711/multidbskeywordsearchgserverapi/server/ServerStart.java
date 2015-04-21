@@ -13,7 +13,7 @@ public class ServerStart {
 	public static void main(final String[] args) throws Exception {
 		
 		if (args.length > 0) {
-			String propertiesFilePath = args[0];
+			String propertiesFilePath = "src/main/resources/config.properties";
 			File propertiesFile = new File(propertiesFilePath);
 			PropertiesManager.getInstance().loadProperties(propertiesFile);
 		}
