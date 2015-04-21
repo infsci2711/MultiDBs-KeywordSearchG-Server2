@@ -31,6 +31,3 @@ mvn install
 sudo chown -R student:student project
 kill -9 $(ps aux | grep java | grep multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar | awk '{print $2}')
 cd /opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI
-
-#start service
-nohup java -jar target/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar src/main/resources/config.properties> log.out 2> error.log < /dev/null &
