@@ -1,12 +1,10 @@
 package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
 import java.io.IOException;
-import java.lang.String;
 import java.util.LinkedList;
 
-import org.json.JSONException;
+import edu.pitt.sis.infsci2711.multidbs.utils.PropertiesManager;
 
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
 
 public class testmetastore {
 	//String[] prestoinfo()

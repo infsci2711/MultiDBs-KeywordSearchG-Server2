@@ -2,17 +2,13 @@ package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
 import java.io.IOException;
 
-import javax.ws.rs.core.Response;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.JerseyClientUtil;
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
+
 
 public class testm {
 
-	public static void main(String[] args) throws IOException, Exception {
+	public static void main(final String[] args) throws IOException, Exception {
 		// TODO Auto-generated method stub
 		JSONObject json1=new JSONObject();
 		//JSONArray json2= (JSONArray) json1;

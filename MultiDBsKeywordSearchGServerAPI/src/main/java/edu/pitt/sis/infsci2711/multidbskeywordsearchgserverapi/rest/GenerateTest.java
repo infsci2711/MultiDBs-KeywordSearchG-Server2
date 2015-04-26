@@ -2,28 +2,17 @@ package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.rest;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.JerseyClientUtil;
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.JSONtoNeo4j;
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.viewModels.Search;
+import edu.pitt.sis.infsci2711.multidbs.utils.JerseyClientUtil;
+import edu.pitt.sis.infsci2711.multidbs.utils.PropertiesManager;
 
 @Path("Generate/")
 public class GenerateTest {
@@ -66,8 +55,9 @@ public class GenerateTest {
 		InputStream in =uc.getInputStream();
 		int c;
 		String output="";
-		while ((c = in.read())!= -1)
+		while ((c = in.read())!= -1) {
 			output = output + c;
+		}
 			System.out.print(c);
 		in.close();
 		

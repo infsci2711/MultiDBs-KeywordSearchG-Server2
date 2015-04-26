@@ -1,10 +1,9 @@
 package edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server;
 
-
-
 import java.io.File;
 
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.JerseyJettyServer;
+import edu.pitt.sis.infsci2711.multidbs.utils.JerseyJettyServer;
+import edu.pitt.sis.infsci2711.multidbs.utils.PropertiesManager;
 
 public class ServerStart {
 	private final static String PROPERTY_PORT = "port";
@@ -13,7 +12,7 @@ public class ServerStart {
 	public static void main(final String[] args) throws Exception {
 		
 		if (args.length > 0) {
-			String propertiesFilePath = "src/main/resources/config.properties";
+			String propertiesFilePath = args[0]; //"src/main/resources/config.properties";
 			File propertiesFile = new File(propertiesFilePath);
 			PropertiesManager.getInstance().loadProperties(propertiesFile);
 		}

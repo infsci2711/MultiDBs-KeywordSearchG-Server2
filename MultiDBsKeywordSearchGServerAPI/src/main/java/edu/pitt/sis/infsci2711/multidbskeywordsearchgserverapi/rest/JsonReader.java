@@ -8,20 +8,16 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
+import edu.pitt.sis.infsci2711.multidbs.utils.PropertiesManager;
 
 public class JsonReader {
 
-  private static String readAll(Reader rd) throws IOException {
+  private static String readAll(final Reader rd) throws IOException {
     StringBuilder sb = new StringBuilder();
     int cp;
     while ((cp = rd.read()) != -1) {
@@ -30,7 +26,7 @@ public class JsonReader {
     return sb.toString();
   }
 
-  public static JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
+  public static JSONArray readJsonFromUrl(final String url) throws IOException, JSONException {
     InputStream is = new URL(url).openStream();
     try {
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -42,7 +38,7 @@ public class JsonReader {
     }
   }
   
-  public static JSONObject readJsonFromUrl2(String url) throws IOException, JSONException {
+  public static JSONObject readJsonFromUrl2(final String url) throws IOException, JSONException {
 	    InputStream is = new URL(url).openStream();
 	    try {
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -60,7 +56,7 @@ public class JsonReader {
   
   @SuppressWarnings("null")
 public static String[] metast() throws JSONException{
-	  String met=PropertiesManager.getInstance().getStringProperty("metastore.rest.base");
+	  String met = PropertiesManager.getInstance().getStringProperty("metastore.rest.base");
     JSONArray json1= new JSONArray();
 	try {
 		json1 = readJsonFromUrl(met);
