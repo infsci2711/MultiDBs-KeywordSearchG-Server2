@@ -9,7 +9,7 @@ cd project
 
 echo "cloning two git repos"
 
-git clone https://github.com/infsci2711/MultiDBs-KeywordSearchG-Server.git
+git clone https://github.com/infsci2711/MultiDBs-KeywordSearchG-WebCleint2.git
 git clone https://github.com/infsci2711/MultiDBs-Utils.git
 
 echo "building utils project"
@@ -19,7 +19,7 @@ mvn install
 
 echo "building server project"
 
-cd /opt/project/MultiDBs-KeywordSearchG-Server
+cd /opt/project/MultiDBs-KeywordSearchG-Server2
 mvn install
 
 echo "creating folder for deployed code"
@@ -29,8 +29,8 @@ mkdir -p deployed
 
 echo "copying jar and config file to deploed folder"
 
-cp /opt/project/MultiDBs-KeywordSearchG-Server/MultiDBsKeywordSearchGServerAPI/target/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar /opt/project/deployed
-cp /opt/project/MultiDBs-KeywordSearchG-Server/MultiDBsKeywordSearchGServerAPI/src/main/resources/config.properties /opt/project/deployed
+cp /opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/target/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar /opt/project/deployed
+cp /opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/src/main/resources/config.properties /opt/project/deployed
 
 echo "starting java server"
 

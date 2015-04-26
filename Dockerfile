@@ -23,17 +23,17 @@ ENV M2 $M2_HOME/bin
 
 ENV PATH $M2:$PATH
 
-RUN useradd -d /home/keywordsearchg1 keywordsearchg1
-RUN mkdir -p /home/keywordsearchg1
-RUN chown keywordsearchg1 /home/keywordsearchg1
+RUN useradd -d /home/keywordsearchg2 keywordsearchg2
+RUN mkdir -p /home/keywordsearchg2
+RUN chown keywordsearchg2 /home/keywordsearchg2
 
-RUN echo "keywordsearchg1:keywordsearchg1" | chpasswd
+RUN echo "keywordsearchg2:keywordsearchg2" | chpasswd
 
-COPY docker-entrypoint.sh /home/keywordsearchg1/entrypoint.sh
+COPY docker-entrypoint.sh /home/keywordsearchg2/entrypoint.sh
 
-RUN chmod -R 777 /home/keywordsearchg1
+RUN chmod -R 777 /home/keywordsearchg2
 
-ENTRYPOINT ["/home/keywordsearchg1/entrypoint.sh"]
+ENTRYPOINT ["/home/keywordsearchg2/entrypoint.sh"]
 
 EXPOSE 22
 EXPOSE 7654
