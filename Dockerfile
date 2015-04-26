@@ -35,7 +35,6 @@ RUN chmod -R 777 /home/keywordsearchg2
 
 ENTRYPOINT ["/home/keywordsearchg2/entrypoint.sh"]
 
-
 EXPOSE 22
 EXPOSE 7654
 

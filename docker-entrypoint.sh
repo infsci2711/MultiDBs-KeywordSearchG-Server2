@@ -35,7 +35,7 @@ cp /opt/project/MultiDBs-KeywordSearchG-Server2/property.csv /opt/project/deploy
 
 echo "starting java server"
 
-/opt/project/deployed
+cd /opt/project/deployed
 nohup java -jar  /opt/project/deployed/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar /opt/project/deployed/config.properties > /opt/project/deployed/log.out 2> /opt/project/deployed/error.log < /dev/null &
 
 exec "$@"
