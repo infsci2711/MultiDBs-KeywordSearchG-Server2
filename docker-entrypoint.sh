@@ -9,7 +9,7 @@ cd project
 
 echo "cloning two git repos"
 
-git clone https://github.com/infsci2711/MultiDBs-KeywordSearchG-WebCleint2.git
+git clone https://github.com/infsci2711/MultiDBs-KeywordSearchG-Server2.git
 git clone https://github.com/infsci2711/MultiDBs-Utils.git
 
 echo "building utils project"
