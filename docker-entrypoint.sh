@@ -31,9 +31,11 @@ echo "copying jar and config file to deploed folder"
 
 cp /opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/target/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar /opt/project/deployed
 cp /opt/project/MultiDBs-KeywordSearchG-Server2/MultiDBsKeywordSearchGServerAPI/src/main/resources/config.properties /opt/project/deployed
+cp /opt/project/MultiDBs-KeywordSearchG-Server2/property.csv /opt/project/deployed
 
 echo "starting java server"
 
+/opt/project/deployed
 nohup java -jar  /opt/project/deployed/multidbskeywordsearchgserverapi-0.1-SNAPSHOT.jar /opt/project/deployed/config.properties > /opt/project/deployed/log.out 2> /opt/project/deployed/error.log < /dev/null &
 
 exec "$@"
