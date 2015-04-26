@@ -1,11 +1,11 @@
 package multidbskeywordsearchgserverapi;
 
-import edu.pitt.sis.infsci2711.multidbskeywordsearchgserverapi.server.PropertiesManager;
 
-import java.io.IOException;
+
+import edu.pitt.sis.infsci2711.multidbs.utils.PropertiesManager;
 
 public class testrest {
-	public void main(String[] args){
+	public void main(final String[] args){
 		String metastoreRegister = PropertiesManager.getInstance().getStringProperty("metastore.rest.getAllDatasources", "");
 		System.out.println(metastoreRegister);
 	}
